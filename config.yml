@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME
+  branch: main
+media_folder: assets
+public_folder: /assets
+collections:
+  - name: site
+    label: Website
+    files:
+      - name: content
+        label: All site content
+        file: content/site.json
+        format: json
+        fields:
+          - {name: settings, label: Settings, widget: object, fields: [
+              {name: email, label: Contact email},
+              {name: form_endpoint, label: Contact form URL (Formspree), required: false, hint: "Leave empty to open the visitor's email app instead"},
+              {name: hero_portrait, label: Home portrait, widget: image, required: false},
+              {name: about_photo, label: About photo, widget: image, required: false}]}
+          - {name: hero, label: Home headline, widget: object, fields: [{name: headline}, {name: intro, widget: text}]}
+          - {name: intro, label: Home intro, widget: object, fields: [{name: eyebrow}, {name: title}, {name: body, widget: list, field: {name: paragraph, widget: text}}]}
+          - {name: services, label: Services, widget: list, fields: [
+              {name: title}, {name: lede}, {name: problem, widget: text},
+              {name: includes, widget: list, field: {name: item}},
+              {name: receive, widget: text},
+              {name: href, label: Link (optional), required: false},
+              {name: cta, label: Button text (optional), required: false}]}
+          - {name: problems, label: Why it matters, widget: list, fields: [{name: title}, {name: body, widget: text}]}
+          - {name: process, label: Process steps, widget: list, fields: [{name: title}, {name: text, widget: text}]}
+          - {name: amazon, label: Amazon page, widget: object, fields: [
+              {name: title}, {name: intro, widget: text}, {name: note, widget: text},
+              {name: examine, widget: list, fields: [{name: title}, {name: body, widget: text}]},
+              {name: steps, widget: list, fields: [{name: title}, {name: text, widget: text}]}]}
+          - {name: projects, label: Portfolio, widget: list, fields: [
+              {name: id, hint: "Short URL name, e.g. my-book"}, {name: title}, {name: author},
+              {name: description, widget: text},
+              {name: cover_image, widget: image, required: false},
+              {name: highlights, widget: list, field: {name: item}},
+              {name: case_study_pdf, label: Case study PDF, widget: file, required: false},
+              {name: published, widget: boolean, default: true}]}
+          - {name: testimonials, label: Testimonials, widget: list, fields: [{name: name}, {name: role, required: false}, {name: quote, widget: text}]}
+          - {name: faqs, label: FAQ, widget: list, fields: [{name: question}, {name: answer, widget: text}]}
+          - {name: about, label: About paragraphs, widget: list, field: {name: paragraph, widget: text}}
